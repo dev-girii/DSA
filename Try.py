@@ -67,6 +67,19 @@ class Sll:
             curr = curr.next 
         else:
             print(f"\n{data} Not found")
+    
+    def hascycle(self,head):
+        slow = head 
+        fast = head 
+
+        while fast!=None and fast.next !=None:
+            slow = slow.next 
+            fast = fast.next.next 
+
+            if(slow == fast):
+                return True 
+        else:
+            return False 
 a = Sll()
 a.search(2)
 a.appendData(1)
