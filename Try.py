@@ -114,5 +114,55 @@ def ls(arr,val):
         if i == val:
             return index 
         index += 1
-print(bs([1,2,3,4,5,6,7,8,9,10],5))
+# print(bs([1,2,3,4,5,6,7,8,9,10],5))
 # print(ls([1,2,3,4,5,6,7,8,9,10],5))
+
+def two_pointer(arr,target):
+    left =0
+    right = len(arr)-1
+    while left<right:
+        if arr[left]+arr[right] == target:
+            return left, right 
+        elif arr[left]+arr[right]<target:
+            left += 1
+        else:
+            right -= 1 
+    else:
+        return -1 
+print(two_pointer([1,2,3,4,5],9))
+
+def three_sum(arr,tar):
+    n = len(arr)
+    arr.sort()
+    for i in range(n-1):
+        l = i + 1
+        r = n - 1
+        req = tar - arr[i]
+        while l<r:
+            if arr[l]+arr[r] == req:
+                return True 
+            elif arr[l]+arr[r]<req:
+                l+=1
+            else:
+                r -=1
+        else:
+            return False 
+print(three_sum([1,2,3,5,45,78,41,0,12],13))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
