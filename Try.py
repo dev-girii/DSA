@@ -94,20 +94,19 @@
 # a.deleteAtLast()
 # a.printData().3
 
-def bs(arr,val):
+def bs(arr,tar):
     left = 0
-    right = len(arr)-1 
-
-    while left<=right:
-        mid = (left+right)//2 
-        if arr[mid] == val:
+    right = len(arr)-1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == tar:
             return mid 
-        if arr[mid]<val:
-            left = mid +1
+        elif arr[mid]>tar:
+            right = mid - 1
         else:
-            right = mid-1
-    else:
-        return -1 
+            left = mid + 1
+    return -1 
+print(bs([1,2,3,4,5,6,7,8],1))
 def ls(arr,val):
     index = 0
     for i in arr:
@@ -150,12 +149,35 @@ def three_sum(arr,tar):
 print(three_sum([1,2,3,5,45,78,41,0,12],13))
 
 
+# searchInMinInRotatedSortedArray
+# [5,6,1,2,3,4]
 
+def search(arr, tar):
+    l = 0 
+    r = len(arr) - 1
+    while l < r:
+        m = (l + r)//2
+        if arr[m]< arr[r]:
+            r = m
+        else:
+            l = m + 1 
+    pivot = l
+    def bs(l, r):
+        while l<=r:
+            m = (l + r)//2
+            if arr[m] == tar:
+                return m 
+            if arr[m] > tar:
+                r = m - 1 
+            else:
+                l = m + 1
+        return -1
+    result = bs(0, pivot - 1)
+    if result != -1:
+        return result 
+    return bs(pivot, len(arr)-1)
 
-
-
-
-
+print("pivot: ", search([5,6,7,1,2,3,4],2))
 
 
 
